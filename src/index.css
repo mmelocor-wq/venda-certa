@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 24% 98%;
+    --foreground: 222 28% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 28% 11%;
+    --primary: 222 83% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 22% 95%;
+    --secondary-foreground: 222 28% 11%;
+    --muted: 220 22% 95%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 220 22% 95%;
+    --accent-foreground: 222 28% 11%;
+    --destructive: 0 72% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 52%;
+    --warning-foreground: 0 0% 100%;
+    --border: 220 16% 89%;
+    --input: 220 16% 89%;
+    --ring: 222 83% 57%;
+    --radius: 1rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 10% 42%;
+    --sidebar-primary: 222 83% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 22% 95%;
+    --sidebar-accent-foreground: 222 28% 11%;
+    --sidebar-border: 220 16% 89%;
+    --sidebar-ring: 222 83% 57%;
+    --chart-1: 222 83% 57%;
+    --chart-2: 145 63% 42%;
+    --chart-3: 38 92% 52%;
+    --chart-4: 267 83% 64%;
+    --chart-5: 0 72% 54%;
+  }
+
+  .dark {
+    --background: 225 30% 12%;
+    --foreground: 210 24% 96%;
+    --card: 226 27% 14%;
+    --card-foreground: 210 24% 96%;
+    --popover: 226 27% 14%;
+    --popover-foreground: 210 24% 96%;
+    --primary: 217 91% 64%;
+    --primary-foreground: 222 47% 10%;
+    --secondary: 226 22% 18%;
+    --secondary-foreground: 210 24% 96%;
+    --muted: 226 22% 18%;
+    --muted-foreground: 218 15% 70%;
+    --accent: 226 22% 18%;
+    --accent-foreground: 210 24% 96%;
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 210 24% 96%;
+    --success: 145 58% 42%;
+    --success-foreground: 210 24% 96%;
+    --warning: 38 92% 56%;
+    --warning-foreground: 222 47% 10%;
+    --border: 226 18% 24%;
+    --input: 226 18% 24%;
+    --ring: 217 91% 64%;
+    --sidebar-background: 226 27% 14%;
+    --sidebar-foreground: 218 15% 70%;
+    --sidebar-primary: 217 91% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 226 22% 18%;
+    --sidebar-accent-foreground: 210 24% 96%;
+    --sidebar-border: 226 18% 24%;
+    --sidebar-ring: 217 91% 64%;
+    --chart-1: 217 91% 64%;
+    --chart-2: 145 58% 42%;
+    --chart-3: 38 92% 56%;
+    --chart-4: 267 83% 64%;
+    --chart-5: 0 72% 58%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', sans-serif;
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+  }
+  ::selection { background: hsl(var(--primary) / 0.18); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 999px; border: 2px solid hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.45); }
+
+  .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .surface-premium { @apply rounded-3xl border border-border/70 bg-card/90 shadow-sm backdrop-blur; }
+  .feedback-processing { @apply inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary; }
+  .feedback-success { @apply inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400; }
+  .feedback-error { @apply inline-flex items-center gap-2 rounded-full border border-destructive/20 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive; }
+  .skeleton-shimmer { position: relative; overflow: hidden; background: hsl(var(--accent)); }
+  .skeleton-shimmer::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.05), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+}
